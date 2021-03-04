@@ -44,3 +44,9 @@ h1 {
 	font-size: 32px;
 	text-align: center;
 }
+
+#solve {
+	display: block;
+	margin: 20px auto;
+	font-size: 24px;
+}
