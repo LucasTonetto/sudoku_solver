@@ -1,0 +1,216 @@
+<!DOCTYPE html>  
+<html>  
+ 	<head>
+ 		<link rel="stylesheet" href="style.css">
+ 		<title>Sudoku Solver</title>
+ 	</head>
+ 	<body>
+
+ 		<h1> Sudoku Solver </h1>
+ 		
+ 		<div id="sudoku">
+
+ 			<div class="quadrado">
+
+	 			<div class="linha">
+			 		<input type="text" id="111" class="input_number" maxlength="1">
+			 		<input type="text" id="112" class="input_number" maxlength="1">
+			 		<input type="text" id="113" class="input_number" maxlength="1">
+			 	</div>
+
+			 	<div class="linha">
+			 		<input type="text" id="121" class="input_number" maxlength="1">
+			 		<input type="text" id="122" class="input_number" maxlength="1">
+			 		<input type="text" id="123" class="input_number" maxlength="1">
+			 	</div>
+
+	 			<div class="linha">
+			 		<input type="text" id="131" class="input_number" maxlength="1">
+			 		<input type="text" id="132" class="input_number" maxlength="1">
+			 		<input type="text" id="133" class="input_number" maxlength="1">
+			 	</div>
+
+			</div>
+
+			<div class="quadrado">
+
+	 			<div class="linha">
+			 		<input type="text" id="211" class="input_number" maxlength="1">
+			 		<input type="text" id="212" class="input_number" maxlength="1">
+			 		<input type="text" id="213" class="input_number" maxlength="1">
+			 	</div>
+
+			 	<div class="linha">
+			 		<input type="text" id="221" class="input_number" maxlength="1">
+			 		<input type="text" id="222" class="input_number" maxlength="1">
+			 		<input type="text" id="223" class="input_number" maxlength="1">
+			 	</div>
+
+	 			<div class="linha">
+			 		<input type="text" id="231" class="input_number" maxlength="1">
+			 		<input type="text" id="232" class="input_number" maxlength="1">
+			 		<input type="text" id="233" class="input_number" maxlength="1">
+			 	</div>
+
+			</div>
+
+			<div class="quadrado">
+
+	 			<div class="linha">
+			 		<input type="text" id="311" class="input_number" maxlength="1">
+			 		<input type="text" id="312" class="input_number" maxlength="1">
+			 		<input type="text" id="313" class="input_number" maxlength="1">
+			 	</div>
+
+			 	<div class="linha">
+			 		<input type="text" id="321" class="input_number" maxlength="1">
+			 		<input type="text" id="322" class="input_number" maxlength="1">
+			 		<input type="text" id="323" class="input_number" maxlength="1">
+			 	</div>
+
+	 			<div class="linha">
+			 		<input type="text" id="331" class="input_number" maxlength="1">
+			 		<input type="text" id="332" class="input_number" maxlength="1">
+			 		<input type="text" id="333" class="input_number" maxlength="1">
+			 	</div>
+
+			</div>
+
+			<div class="quadrado">
+
+	 			<div class="linha">
+			 		<input type="text" id="411" class="input_number" maxlength="1">
+			 		<input type="text" id="412" class="input_number" maxlength="1">
+			 		<input type="text" id="413" class="input_number" maxlength="1">
+			 	</div>
+
+			 	<div class="linha">
+			 		<input type="text" id="421" class="input_number" maxlength="1">
+			 		<input type="text" id="422" class="input_number" maxlength="1">
+			 		<input type="text" id="423" class="input_number" maxlength="1">
+			 	</div>
+
+	 			<div class="linha">
+			 		<input type="text" id="431" class="input_number" maxlength="1">
+			 		<input type="text" id="432" class="input_number" maxlength="1">
+			 		<input type="text" id="433" class="input_number" maxlength="1">
+			 	</div>
+
+			</div>
+
+			<div class="quadrado">
+
+	 			<div class="linha">
+			 		<input type="text" id="511" class="input_number" maxlength="1">
+			 		<input type="text" id="512" class="input_number" maxlength="1">
+			 		<input type="text" id="513" class="input_number" maxlength="1">
+			 	</div>
+
+			 	<div class="linha">
+			 		<input type="text" id="521" class="input_number" maxlength="1">
+			 		<input type="text" id="522" class="input_number" maxlength="1">
+			 		<input type="text" id="523" class="input_number" maxlength="1">
+			 	</div>
+
+	 			<div class="linha">
+			 		<input type="text" id="531" class="input_number" maxlength="1">
+			 		<input type="text" id="532" class="input_number" maxlength="1">
+			 		<input type="text" id="533" class="input_number" maxlength="1">
+			 	</div>
+
+			</div>
+
+			<div class="quadrado">
+
+	 			<div class="linha">
+			 		<input type="text" id="611" class="input_number" maxlength="1">
+			 		<input type="text" id="612" class="input_number" maxlength="1">
+			 		<input type="text" id="613" class="input_number" maxlength="1">
+			 	</div>
+
+			 	<div class="linha">
+			 		<input type="text" id="621" class="input_number" maxlength="1">
+			 		<input type="text" id="622" class="input_number" maxlength="1">
+			 		<input type="text" id="623" class="input_number" maxlength="1">
+			 	</div>
+
+	 			<div class="linha">
+			 		<input type="text" id="631" class="input_number" maxlength="1">
+			 		<input type="text" id="632" class="input_number" maxlength="1">
+			 		<input type="text" id="633" class="input_number" maxlength="1">
+			 	</div>
+
+			</div>
+
+			<div class="quadrado">
+
+	 			<div class="linha">
+			 		<input type="text" id="711" class="input_number" maxlength="1">
+			 		<input type="text" id="712" class="input_number" maxlength="1">
+			 		<input type="text" id="713" class="input_number" maxlength="1">
+			 	</div>
+
+			 	<div class="linha">
+			 		<input type="text" id="721" class="input_number" maxlength="1">
+			 		<input type="text" id="722" class="input_number" maxlength="1">
+			 		<input type="text" id="723" class="input_number" maxlength="1">
+			 	</div>
+
+	 			<div class="linha">
+			 		<input type="text" id="731" class="input_number" maxlength="1">
+			 		<input type="text" id="732" class="input_number" maxlength="1">
+			 		<input type="text" id="733" class="input_number" maxlength="1">
+			 	</div>
+
+			</div>
+
+			<div class="quadrado">
+
+	 			<div class="linha">
+			 		<input type="text" id="811" class="input_number" maxlength="1">
+			 		<input type="text" id="812" class="input_number" maxlength="1">
+			 		<input type="text" id="813" class="input_number" maxlength="1">
+			 	</div>
+
+			 	<div class="linha">
+			 		<input type="text" id="821" class="input_number" maxlength="1">
+			 		<input type="text" id="822" class="input_number" maxlength="1">
+			 		<input type="text" id="823" class="input_number" maxlength="1">
+			 	</div>
+
+	 			<div class="linha">
+			 		<input type="text" id="831" class="input_number" maxlength="1">
+			 		<input type="text" id="832" class="input_number" maxlength="1">
+			 		<input type="text" id="833" class="input_number" maxlength="1">
+			 	</div>
+
+			</div>
+
+			<div class="quadrado">
+
+	 			<div class="linha">
+			 		<input type="text" id="911" class="input_number" maxlength="1">
+			 		<input type="text" id="912" class="input_number" maxlength="1">
+			 		<input type="text" id="913" class="input_number" maxlength="1">
+			 	</div>
+
+			 	<div class="linha">
+			 		<input type="text" id="921" class="input_number" maxlength="1">
+			 		<input type="text" id="922" class="input_number" maxlength="1">
+			 		<input type="text" id="923" class="input_number" maxlength="1">
+			 	</div>
+
+	 			<div class="linha">
+			 		<input type="text" id="931" class="input_number" maxlength="1">
+			 		<input type="text" id="932" class="input_number" maxlength="1">
+			 		<input type="text" id="933" class="input_number" maxlength="1">
+			 	</div>
+
+			</div>
+
+ 		</div>
+
+ 		<script type="text/javascript" src="app.js"></script>
+
+ 	</body>
+</html>
