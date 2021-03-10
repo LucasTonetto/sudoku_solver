@@ -1,13 +1,13 @@
 window.onload = () => {
-	// document.querySelectorAll('.input_number').forEach(elm => {
-	// 	elm.addEventListener('keyup', function(e) {
-	// 		if(/[1-9]/.test(e.key)) {
-	// 			elm.value = e.key;
-	// 		} else {
-	// 			elm.value = '';
-	// 		}
-	// 	});
-	// });
+	document.querySelectorAll('.input_number').forEach(elm => {
+		elm.addEventListener('keyup', function(e) {
+			if(/^[a-zA-ZçÇ]$/.test(e.key)) {
+				elm.value = '';
+			} else if(/^[0-9]$/.test(e.key)) {
+				elm.value = e.key;
+			}
+		});
+	});
 
 	const createSudoku = () => {
 		const sudoku = [];
