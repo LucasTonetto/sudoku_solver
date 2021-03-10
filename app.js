@@ -22,7 +22,8 @@ window.onload = () => {
 					line: [],
 					column: [],
 					square: []
-				}
+				},
+				availabeValues: []
 			});
 		});
 		return sudoku;
@@ -47,24 +48,53 @@ window.onload = () => {
 		return newSudoku;
 	};
 
-	const defineValues = (sudoku) => {
-		const newSudoku = [];
+	const defineAvailableValues = (sudoku) => {
+		const newSudoku = [...sudoku];
 		const values = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-		sudoku.filter(cell => !cell.value).forEach(cell => {
-			const possibleNumbers = values.filter(number => 
-				cell.valueOptions.line.indexOf(number) > -1 &&
-				cell.valueOptions.column.indexOf(number) > -1 &&
-				cell.valueOptions.square.indexOf(number) > -1
-			);
-			if(possibleNumbers.length === 1) {
-				cell.value = possibleNumbers[0];
+		return newSudoku.map(cell => {
+			if(!cell.value) {
+				const possibleNumbers = values.filter(number => 
+					cell.valueOptions.line.indexOf(number) > -1 &&
+					cell.valueOptions.column.indexOf(number) > -1 &&
+					cell.valueOptions.square.indexOf(number) > -1
+				);
+				cell.availabeValues = possibleNumbers;
 			}
-			newSudoku.push(cell);
+			return cell;
 		});
-		return newSudoku;
 	};
 
-	const putValues = (sudoku) => {
+	const defineValues = (sudoku) => {
+		const newSudoku = [...sudoku];
+		const values = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+		return newSudoku.map(cell => {
+			if(!cell.value) {
+				const lineCells = newSudoku.filter(lineCell => lineCell.line === cell.line);
+				const columnCells = newSudoku.filter(columnCell => columnCell.column === cell.column);
+				const squareCells = newSudoku.filter(squareCell => squareCell.square === cell.square);
+				const availableLineValues = cell.availabeValues.filter(availabeValue =>
+					lineCells.filter(lineCell => lineCell.availabeValues.indexOf(availabeValue) === -1).length > 0
+				);
+				const availableColumnValues = cell.availabeValues.filter(availabeValue => 
+					columnCells.filter(columnCell => columnCell.availabeValues.indexOf(availabeValue) === -1).length > 0
+				);
+				const availableSquareValues = cell.availabeValues.filter(availabeValue => 
+					squareCells.filter(squareCell => squareCell.availabeValues.indexOf(availabeValue) === -1).length > 0
+				);
+				const definitiveValue = values.filter(number => 
+					availableLineValues.indexOf(number) > -1 &&
+					availableColumnValues.indexOf(number) > -1 &&
+					availableSquareValues.indexOf(number) > -1
+				);
+				if(definitiveValue.length === 1) {
+					cell.value = definitiveValue[0];
+				}
+			}
+			return cell;
+		});
+	};
+
+	const writeValues = (sudoku) => {
 		sudoku.forEach(cell => {
 			document.getElementById(''+cell.square+cell.line+cell.column).value = cell.value;
 		});
@@ -72,10 +102,9 @@ window.onload = () => {
 
 	document.querySelector('#solve').addEventListener('click', () => {
 		let sudoku = createSudoku();
-		for(let i = 0; i < 1; i++) {
-			sudoku = defineValues(putValueOptions(sudoku));
-			console.log(sudoku);
-			putValues(sudoku);
+		for(let i = 0; i < 100; i++) {
+			sudoku = defineValues(defineAvailableValues(putValueOptions(sudoku)));
+			writeValues(sudoku);
 		}
 	});
 }
